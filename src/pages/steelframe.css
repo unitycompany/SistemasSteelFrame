@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .steelframe-images span{
@@ -36,6 +37,18 @@
 .steelframe-images span img{
     width: 100%;
     object-fit: contain;
+}
+
+.steelframe-images div{
+    background-image: url('../assets/home.JPG');
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-position: top;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .steelframe-images img{

@@ -10,7 +10,7 @@
 }
 
 .steelframe-images{
-    width: 50%;
+    width: 60%;
     height: 75%;
     position: relative;
     border-radius: 12px;
@@ -49,6 +49,7 @@
     position: absolute;
     background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 12px;
 }
 
 .steelframe-images img{
@@ -62,7 +63,7 @@
 }
 
 .steelframe-texts{
-    width: 50%;
+    width: 40%;
     height: auto;
     display: flex;
     flex-direction: column;

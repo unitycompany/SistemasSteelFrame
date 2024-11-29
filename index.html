@@ -64,20 +64,22 @@
                     </div>
                     <input type="email" id="email" placeholder="E-mail">
                     <div class="home-form-radio">
-                        <label>
-                            <input type="radio" name="temProjeto" value="Sim"> Sim, tenho projeto
-                        </label>
-                        <label>
-                            <input type="radio" name="temProjeto" value="Não"> Não tenho projeto
-                        </label>
+                        <p>Sua obra tem projeto?</p>
+                        <div>
+                            <input type="radio" id="projeto-sim" name="temProjeto" value="Sim">
+                            <label for="projeto-sim">Sim</label>
+                            <input type="radio" id="projeto-nao" name="temProjeto" value="Não">
+                            <label for="projeto-nao">Não</label>
+                        </div>
                     </div>
                     <div class="home-form-radio">
-                        <label>
-                            <input type="radio" name="contratacaoOrOrcamento" value="Contratação"> Contratação
-                        </label>
-                        <label>
-                            <input type="radio" name="contratacaoOrOrcamento" value="Orçamento"> Orçamento
-                        </label>
+                        <p>Qual seu objetivo?</p>
+                        <div>
+                            <input type="radio" id="objetivo-contratacao" name="contratacaoOrOrcamento" value="Contratação">
+                            <label for="objetivo-contratacao">Contratação</label>
+                            <input type="radio" id="objetivo-orcamento" name="contratacaoOrOrcamento" value="Orçamento">
+                            <label for="objetivo-orcamento">Orçamento</label>
+                        </div>
                     </div>
                     <button type="submit">Enviar meus dados</button>
                     <p>As informações serão usadas apenas para meio de contato, qualquer dúvida acesse nossa <a href="#">política de privacidade</a>.</p>
@@ -214,30 +216,12 @@
 
     <section class="steelframe" id="steelframe">
         <div class="steelframe-images">
-            <img src="src/assets/steelframe.JPG" alt="imagem para decidir ainda">
+            <img src="src/assets/home.JPG" alt="imagem para decidir ainda">
             <span><img src="src/assets/logoIcon.png" alt="logo da fast drywall e steel frame"></span>
         </div>
         <div class="steelframe-texts">
-            <h1>Steel Frame <b>vs</b> Alvenaria</h1>
-            <div>
-                <ol>
-                    <li>Construção 4x mais rápida</li>
-                    <li>Construção limpa</li>
-                    <li>Baixo consumo de recursos naturais</li>
-                    <li>Maior eficiência energética</li>
-                    <li>Menor desperdício de materiais</li>
-                    <li>Perfis de aço leve</li>
-                    <li>Mais resistente</li>
-                    <li>Superversátil</li>
-                </ol>
-                <ol>
-                    <li>Geração elevada de resíduos</li>
-                    <li>Desperdício elevado de materiais</li>
-                    <li>Construção tradicional demorada</li>
-                    <li>Alto consumo de água e outros recursos naturais</li>
-                    <li>Sem flexibilidade para adaptações futuras</li>
-                </ol>
-            </div>
+            <h1>Saia na frante com a <b>Fast!</b></h1>
+            <p>O Steel Frame é uma tecnologia moderna e eficiente que está revolucionando a construção civil. Seja para obras comerciais, residenciais, reformas e até novas construções, garanta materiais para a sua construção em Steel Frame à pronta entrega na Fast com o melhor custo-benefício.</p>
             <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">Solicitar orçamento imediato</button>
         </div>
     </section>

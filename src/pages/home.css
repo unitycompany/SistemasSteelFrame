@@ -104,33 +104,66 @@
     background-color: var(--color--white);
 }
 
-.home-form-radio{
+.home-form-radio {
     display: flex;
-    height: auto;
-    width: 100%;
-    justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    width: 100%;
+    gap: 10px;
+    background-color: var(--color--white);
+    border-radius: 12px;
+    padding: 5px;
 }
 
-.home-form-radio label{
+.home-form-radio p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color--black);
+    padding-left: 5px;
+}
+
+.home-form-radio div {
     display: flex;
-    white-space: nowrap;
-    width: auto;
+    flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
-    justify-content: center;
-    background-color: var(--color--white);
-    padding: 10px;
-    border-radius: 12px;
-    opacity: .6;
 }
 
 input[type="radio"] {
-    appearance: auto;
-    width: 16px; 
-    height: 16px;
-    margin-right: 8px; 
+    display: none; /* Oculta o rádio padrão */
+}
+
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #f5f5f5;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+input[type="radio"]:checked + label {
+    border-color: var(--color--black);
+    background-color: var(--color--red);
+    color: #fff;
+}
+
+label:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    label {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .home-form-radio {
+        gap: 8px;
+    }
 }
 
 .home-form-campos input{
@@ -183,7 +216,7 @@ input[type="radio"] {
     width: 92.5%;
     height: 85%;
     border-radius: 12px;
-    background-image: url('../assets/home.JPG');
+    background-image: url('../assets/steelframe.JPG');
     background-position: top;
     background-size: cover;
     top: 50%;
@@ -200,6 +233,15 @@ input[type="radio"] {
     .home-texts p {
         font-size: 1rem;
     }
+
+    .home-form-radio > p{
+        font-size: 1rem!important;
+    }
+
+    .home-form-radio span{
+        margin-left: -10px;
+    }
+    
 
     .home-form-top h2{
         font-size: 1.4rem;
@@ -220,7 +262,7 @@ input[type="radio"] {
         padding: 10% 2.5%;
     }
 
-    .home-form-radio label{
+    .home-form-radio > p{
         font-size: .8rem!important;
     }
 
@@ -270,7 +312,7 @@ input[type="radio"] {
     }
 
     .home-form-campos input{
-        padding: 10px 20px;
+        padding: 10px 10px;
         font-size: .8rem;
     }
 

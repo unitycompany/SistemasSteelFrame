@@ -35,17 +35,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0 0 0;
     flex-direction: column;
     border-radius: 12px;
     background-color: var(--color--gray);
+    gap: 20px;
 }
 
 .topicos-card img{
-    height: 100px;
+    height: 30vh;
     width: 100%;
     border-radius: 12px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .topicos-card div{
@@ -55,7 +55,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: 20px;
-    height: 30vh;
+    height: 10vh;
 }
 
 .topicos-card div h2{

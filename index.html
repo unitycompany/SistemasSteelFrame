@@ -45,10 +45,10 @@
 
             <div class="home-texts">
                 <h1>
-                    Já pensou em<b> construir de uma forma mais rápida</b> e eficiente?
+                    Adquira o <b>sistema completo</b> de Steel Frame na FAST!
                 </h1>
                 <p>
-                    Na Fast, você encontra perfis de alta qualidade para Steel Frame e tudo o que precisa, com qualidade garantida e preços que cabem no seu bolso.
+                    Tudo para o sistema completo de Steel Frame, com lojas em todo o Brasil, oferecemos materiais para a sua construção em Steel Frame sempre à pronta entrega.
                 </p>
             </div>
         
@@ -63,15 +63,24 @@
                         <input type="tel" id="tel" placeholder="WhatsApp">
                     </div>
                     <input type="email" id="email" placeholder="E-mail">
-                    <select>
-                        <option selected disabled>Qual a área construida do seu projeto?</option>
-                        <option value="descartado">Não tenho projeto</option>
-                        <option value="50-150">50m² a 150m²</option>
-                        <option value="150-300">150m² a 300m²</option>
-                        <option value="+300">mais de 300m²</option>
-                    </select>
-                    <button>Enviar meus dados</button>
-                    <p>As informações serão usadas apenas para meio de contato, qualquer duvida acesse nossa <a href="#">politica de privacidade</a>.</p>
+                    <div class="home-form-radio">
+                        <label>
+                            <input type="radio" name="temProjeto" value="Sim"> Sim, tenho projeto
+                        </label>
+                        <label>
+                            <input type="radio" name="temProjeto" value="Não"> Não tenho projeto
+                        </label>
+                    </div>
+                    <div class="home-form-radio">
+                        <label>
+                            <input type="radio" name="contratacaoOrOrcamento" value="Contratação"> Contratação
+                        </label>
+                        <label>
+                            <input type="radio" name="contratacaoOrOrcamento" value="Orçamento"> Orçamento
+                        </label>
+                    </div>
+                    <button type="submit">Enviar meus dados</button>
+                    <p>As informações serão usadas apenas para meio de contato, qualquer dúvida acesse nossa <a href="#">política de privacidade</a>.</p>
                 </div>
 
                 <script>
@@ -80,30 +89,22 @@
                         const submitButton = formElement.querySelector('button');
                 
                         formElement.addEventListener('submit', function (event) {
-                            event.preventDefault(); 
+                            event.preventDefault();
                 
                             const name = formElement.querySelector('#name').value.trim();
                             const email = formElement.querySelector('#email').value.trim();
                             const whatsapp = formElement.querySelector('#tel').value.trim();
-                            const areaConstruida = formElement.querySelector('select').value;
+                            const temProjeto = formElement.querySelector('input[name="temProjeto"]:checked')?.value || '';
+                            const contratacaoOrOrcamento = formElement.querySelector('input[name="contratacaoOrOrcamento"]:checked')?.value || '';
                 
-                            if (!name || !email || !whatsapp || areaConstruida === "Qual a área construida do seu projeto?") {
+                            if (!name || !email || !whatsapp || !temProjeto || !contratacaoOrOrcamento) {
                                 alert("Por favor, preencha todos os campos corretamente.");
                                 return;
                             }
                 
                             displayLoadingOverlay(true);
                 
-                            const utms = getUTMs();
-                            const utmSource = utms.utm_source || 'orgânico';
-                            const utmMedium = utms.utm_medium || '';
-                            const utmCampaign = utms.utm_campaign || '';
-                            const utmContent = utms.utm_content || '';
-                            const utmTerm = utms.utm_term || '';
-                
-                            const pageReferrer = window.location.href || 'URL não encontrada';
-                
-                            if (areaConstruida === 'descartado') {
+                            if (temProjeto.toLowerCase() === 'não') {
                                 setTimeout(() => {
                                     displayLoadingOverlay(false);
                                     alert('Formulário enviado com sucesso!');
@@ -112,6 +113,14 @@
                                 console.log('Lead descartado: obra sem projeto.');
                                 return;
                             }
+                
+                            const utms = getUTMs();
+                            const utmSource = utms.utm_source || 'orgânico';
+                            const utmMedium = utms.utm_medium || '';
+                            const utmCampaign = utms.utm_campaign || '';
+                            const utmContent = utms.utm_content || '';
+                            const utmTerm = utms.utm_term || '';
+                            const pageReferrer = window.location.href || 'URL não encontrada';
                 
                             const payload = {
                                 rules: {
@@ -133,7 +142,8 @@
                                             source: utmSource
                                         },
                                         custom_fields: {
-                                            areaConstruida,
+                                            temProjeto,
+                                            contratacaoOrOrcamento,
                                             uniqueId: generateUniqueId(),
                                             utm_source: utmSource,
                                             utm_medium: utmMedium,
@@ -156,7 +166,6 @@
                             .then(response => response.json())
                             .then(data => {
                                 console.log('Success:', data);
-                
                                 displayLoadingOverlay(false);
                                 alert('Formulário enviado com sucesso!');
                                 formElement.reset();
@@ -185,17 +194,17 @@
                 
                         function displayLoadingOverlay(show) {
                             if (show) {
-                                // Mostra um overlay de carregamento
                                 console.log("Mostrando overlay de carregamento...");
                             } else {
-                                // Remove o overlay de carregamento
                                 console.log("Removendo overlay de carregamento...");
                             }
                         }
                     });
                 </script>
-                
+
             </form>
+
+                
 
         </div>
         <div class="home-images">
@@ -236,54 +245,48 @@
     <section class="topicos" id="topicos">
         <div class="background-black"></div>
         <div class="topicos-title">
-            <h1>Vantagens</h1>
+            <h1>Produtos do sistema</h1>
         </div>
         <div class="topicos-container">
             <div class="topicos-card">
-                <img src="src/assets/velocidade.png" alt="imagem do topico">
+                <img src="src/assets/Tyvek.png" alt="imagem do topico">
                 <div>
-                    <h2>Sua construção 4x mais rápida e eficiente</h2>
-                    <p>O Steel Frame permite uma execução 4x mais produtiva graças às estruturas pré-fabricadas, que agilizam todo o processo de construção.</p>
+                    <h2>Tyvek</h2>
                     <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
                 </div>
             </div>
             <div class="topicos-card">
-                <img src="src/assets/limpa.png" alt="imagem do topico">
+                <img src="src/assets/cimenticia.webp" alt="imagem do topico">
                 <div>
-                    <h2>Sua obra mais limpa</h2>
-                    <p>Graças à fabricação sob medida de cada perfil, uma construção em Steel Frame é, altamente, precisa, o que elimina o desperdício comum de materiais em obras tradicionais.</p>
+                    <h2>Cimenticia</h2>
                     <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
                 </div>
             </div>
             <div class="topicos-card">
-                <img src="src/assets/custos.png" alt="imagem do topico">
+                <img src="src/assets/glasroc.webp" alt="imagem do topico">
                 <div>
-                    <h2>Maior precisão de custos</h2>
-                    <p>O Steel Frame proporciona um planejamento detalhado desde o início. Isso evita gastos inesperados e assegura o cumprimento do orçamento com maior transparência.</p>
+                    <h2>Glasroc</h2>
                     <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
                 </div>
             </div>
             <div class="topicos-card">
-                <img src="src/assets/logistica.png" alt="imagem do topico">
+                <img src="src/assets/ladevidro.webp" alt="imagem do topico">
                 <div>
-                    <h2>Logística</h2>
-                    <p>Uma construção em Steel Frame é até 10 vezes mais leve que a alvenaria, facilitando a logística e reduzindo viagens de transporte, o que otimiza tempo e custos.</p>
+                    <h2>Lã de vidro</h2>
                     <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
                 </div>
             </div>
             <div class="topicos-card">
-                <img src="src/assets/agua.png" alt="imagem do topico">
+                <img src="src/assets/fitatelada.webp" alt="imagem do topico">
                 <div>
-                    <h2>Baixo consumo de água</h2>
-                    <p>Como construção a seco, o Steel Frame elimina a água usada na mistura de argamassa e concreto. A montagem com peças pré-fabricadas garante eficiência e sustentabilidade.</p>
+                    <h2>Fita telada</h2>
                     <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
                 </div>
             </div>
             <div class="topicos-card">
-                <img src="src/assets/ambiental.png" alt="imagem do topico">
+                <img src="src/assets/basecoat.webp" alt="imagem do topico">
                 <div>
-                    <h2>Baixo impacto ambiental</h2>
-                    <p>O uso de materiais recicláveis, como o aço, e a redução de resíduos, além do processo industrializado tornam o Steel Frame mais sustentável.</p>
+                    <h2>Basecoat</h2>
                     <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
                 </div>
             </div>

@@ -92,6 +92,7 @@
     .topicos-card{
         width: 31%;
         gap: 30px;
+        height: 50vh;
     }
 }
 

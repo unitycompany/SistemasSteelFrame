@@ -1,0 +1,67 @@
+.rodape{
+    width: 100%;
+    width: 1140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    flex-direction: column;
+    padding: 0 5%;
+    height: 50vh;
+}
+
+.rodape-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rodape-text h1{
+    font-size: 2rem;
+    line-height: 120%;
+    width: 70%;
+    text-align: center;
+    color: var(--color--white);
+}
+
+.rodape-text h1 b{
+    color: var(--color--red--light);
+}
+
+.rodape-politica{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rodape-politica p{
+    opacity: .6;
+    font-size: .9rem;
+    color: var(--color--white);
+}
+
+.rodape-politica p a{
+    opacity: 1!important;
+    color: var(--color--white);
+}
+
+@media (min-width: 768px) and (max-width: 1280px){
+    h1{
+        font-size: 1.8rem!important;
+    }
+}
+
+@media (max-width: 768px){
+    .rodape{
+        height: auto;
+        padding: 10% 2.5%;
+    }
+
+    .rodape-text h1{
+        font-size: 1.3rem;
+        width: 35%;
+    }
+}

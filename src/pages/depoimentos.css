@@ -1,0 +1,127 @@
+.depoimentos{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    width: 100%;
+    max-width: 1140px;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.depoimentos-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.depoimentos-text h1{
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    line-height: 120%;
+}
+
+.depoimentos-text h1 b{
+    color: var(--color--red);
+}
+
+.depoimentos-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 60%;
+    gap: 20px;
+}
+
+.depoimentos-card{
+    width: 45%;
+    height: 40%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.depoimentos-card p{
+    font-size: .9rem;
+    line-height: 100%;
+    opacity: .6;
+}
+
+.depoimentos-card div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.depoimentos-card div div:nth-child(1){
+    width: 50px;
+    height: 50px;
+    background-color: var(--color--red);
+    border-radius: 50%;
+    display: flex;
+    background-position: center;
+    background-size: contain;
+}
+
+.depoimentos-card div div:nth-child(2){
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+}
+
+@media (min-width: 768px) and (max-width: 1280px){
+    .depoimentos{
+        height: 90vh;
+    }
+} 
+
+@media (max-width: 768px){
+    .depoimentos{
+        height: auto;
+        padding: 10% 2.5%;
+    }
+
+    .depoimentos-text h1{
+        font-size: 1.5rem;
+    }
+
+    .depoimentos-container{
+        gap: 10px;
+        height: auto;
+    }
+
+    .depoimentos-card{
+        width: 100%;
+        flex-direction: column-reverse;
+        gap: 20px;
+        align-items: center;
+        padding: 20px 0px;
+    }
+
+    .depoimentos-card p{
+        font-size: .8rem;
+        text-align: justify;
+        width: 90%;
+    }
+
+    .depoimentos-card div div:nth-child(1){
+        width: 30px;
+        height: 30px;
+    }
+
+    .depoimentos-card h2{
+        font-size: .9rem;
+    }
+
+    .depoimentos-card div div:nth-child(2) p{
+        width: 100%;
+    }
+}

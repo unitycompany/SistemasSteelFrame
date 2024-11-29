@@ -1,0 +1,252 @@
+.home{
+    width: 100%;
+    max-width: 1140px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-left{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    padding-left: 5%;
+}
+
+.home-texts{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.home-texts h1{
+    font-size: 2.4rem;
+    line-height: 110%;
+    display: inline-block;
+    width: 90%;
+}
+
+.home-texts h1 b{
+    color: var(--color--red);
+}
+
+.home-texts p{
+    font-size: 1.1rem;
+    line-height: 120%;
+    width: 85%;
+    opacity: .6;
+}
+
+.home-form{
+    width: 95%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 25px;
+    background-color: var(--color--gray);
+    border-radius: 12px;
+}
+
+.home-form-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.home-form-top h2{
+    line-height: 100%;
+    font-weight: var(--font--medium);
+    font-size: 1.5rem;
+    width: 65%;
+}
+
+.home-form-top h2 b{
+    color: var(--color--red);
+}
+
+.home-form-top img{
+    width: 35%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.home-form-campos{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+.home-form-campos div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.home-form-campos div input{
+    width: 50%;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: var(--color--white);
+}
+
+.home-form-campos input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.home-form-campos select{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 12px;
+    color: var(--color--black);
+    opacity: 0.8;
+}
+
+.home-form-campos button{
+    width: 100%;
+}
+
+.home-form-campos p{
+    font-size: .8rem;
+    line-height: 100%;
+    opacity: .6;
+}
+
+.home-images{
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.home-images::before{
+    content: '';
+    width: 97.5%;
+    height: 70%;
+    border-radius: 12px;
+    background-color: var(--color--gray);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.home-images::after{
+    content: '';
+    width: 92.5%;
+    height: 85%;
+    border-radius: 12px;
+    background-image: url('../assets/home.JPG');
+    background-position: top;
+    background-size: cover;
+    top: 50%;
+    right: 2.5%;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+@media (min-width: 768px) and (max-width: 1280px){
+    .home-texts h1{
+        font-size: 1.5rem!important;
+    }
+
+    .home-texts p {
+        font-size: 1rem;
+    }
+
+    .home-form-top h2{
+        font-size: 1.4rem;
+        width: 75%;
+    }
+
+    .home-form-top img{
+        width: 25%;
+    }
+}
+
+@media (max-width: 768px){
+    .home{
+        flex-direction: column;
+        height: auto;
+        position: relative;
+        z-index: 1;
+        padding: 10% 2.5%;
+    }
+
+    .home-left {
+        width: 100%;
+        padding: 0;
+    }
+
+    .home-images{
+        display: none;
+    }
+
+    .home-texts{
+        align-items: center;
+        text-align: center;
+    }
+
+    .home-texts h1{
+        font-size: 2rem;
+        width: 100%;
+    }
+
+    .home-texts p {
+        width: 95%;
+        font-size: 1rem;
+    }
+
+    .home-form{
+        width: 100%;
+        padding: 15px;
+    }
+
+    .home-form-top{
+        justify-content: space-around;
+    }
+
+    .home-form-top h2{
+        font-size: 1.2rem;
+    }
+
+    .home-form-top img{
+        width: 20%;
+    }
+
+    .home-form-campos div input{
+        padding: 10px 20px;
+    }
+
+    .home-form-campos input{
+        padding: 10px 20px;
+        font-size: .8rem;
+    }
+
+    .home-form-campos select{
+        padding: 10px 20px;
+        font-size: .8rem;
+    }
+
+    .home-form-campos p{
+        font-size: .7rem;
+    }
+}

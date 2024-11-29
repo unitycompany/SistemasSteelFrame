@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- estilos gerais -->
+    <link rel="stylesheet" href="src/styles/global.css">
+    <link rel="stylesheet" href="src/styles/reset.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+
+    <!-- estilos de todas as páginas -->
+    <link rel="stylesheet" href="src/pages/home.css">
+    <link rel="stylesheet" href="src/pages/steelframe.css">
+    <link rel="stylesheet" href="src/pages/topicos.css">
+    <link rel="stylesheet" href="src/pages/porques.css">
+    <link rel="stylesheet" href="src/pages/sobre.css">
+    <link rel="stylesheet" href="src/pages/depoimentos.css">
+    <link rel="stylesheet" href="src/pages/rodape.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <link rel="icon" href="src/assets/icon.png">
+
+    <title>Fast Drywall | Sua solução para qualquer obra</title>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M2BPC3G');</script>
+    <!-- End Google Tag Manager -->
+
+
+</head>
+
+<body>
+
+    <section class="home" id="home">
+
+        <div class="home-left">
+
+            <div class="home-texts">
+                <h1>
+                    Já pensou em<b> construir de uma forma mais rápida</b> e eficiente?
+                </h1>
+                <p>
+                    Na Fast, você encontra perfis de alta qualidade para Steel Frame e tudo o que precisa, com qualidade garantida e preços que cabem no seu bolso.
+                </p>
+            </div>
+        
+            <form class="home-form" id="contactForm">
+                <div class="home-form-top">
+                    <h2>Peça agora <b>seu orçamento</b></h2>
+                    <img src="src/assets/logoIcon.png">
+                </div>
+                <div class="home-form-campos">
+                    <div>
+                        <input type="text" id="name" placeholder="Nome">
+                        <input type="tel" id="tel" placeholder="WhatsApp">
+                    </div>
+                    <input type="email" id="email" placeholder="E-mail">
+                    <select>
+                        <option selected disabled>Qual a área construida do seu projeto?</option>
+                        <option value="descartado">Não tenho projeto</option>
+                        <option value="50-150">50m² a 150m²</option>
+                        <option value="150-300">150m² a 300m²</option>
+                        <option value="+300">mais de 300m²</option>
+                    </select>
+                    <button>Enviar meus dados</button>
+                    <p>As informações serão usadas apenas para meio de contato, qualquer duvida acesse nossa <a href="#">politica de privacidade</a>.</p>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const formElement = document.querySelector('#contactForm');
+                        const submitButton = formElement.querySelector('button');
+                
+                        formElement.addEventListener('submit', function (event) {
+                            event.preventDefault(); 
+                
+                            const name = formElement.querySelector('#name').value.trim();
+                            const email = formElement.querySelector('#email').value.trim();
+                            const whatsapp = formElement.querySelector('#tel').value.trim();
+                            const areaConstruida = formElement.querySelector('select').value;
+                
+                            if (!name || !email || !whatsapp || areaConstruida === "Qual a área construida do seu projeto?") {
+                                alert("Por favor, preencha todos os campos corretamente.");
+                                return;
+                            }
+                
+                            displayLoadingOverlay(true);
+                
+                            const utms = getUTMs();
+                            const utmSource = utms.utm_source || 'orgânico';
+                            const utmMedium = utms.utm_medium || '';
+                            const utmCampaign = utms.utm_campaign || '';
+                            const utmContent = utms.utm_content || '';
+                            const utmTerm = utms.utm_term || '';
+                
+                            const pageReferrer = window.location.href || 'URL não encontrada';
+                
+                            if (areaConstruida === 'descartado') {
+                                setTimeout(() => {
+                                    displayLoadingOverlay(false);
+                                    alert('Formulário enviado com sucesso!');
+                                    formElement.reset();
+                                }, 1000);
+                                console.log('Lead descartado: obra sem projeto.');
+                                return;
+                            }
+                
+                            const payload = {
+                                rules: {
+                                    update: "false",
+                                    filter_status_update: "open",
+                                    equal_pipeline: "true",
+                                    status: "open",
+                                    validate_cpf: "false",
+                                },
+                                leads: [
+                                    {
+                                        id: "FastDrywall_Lead",
+                                        user: name,
+                                        email: email,
+                                        name: name,
+                                        personal_phone: whatsapp,
+                                        mobile_phone: whatsapp,
+                                        last_conversion: {
+                                            source: utmSource
+                                        },
+                                        custom_fields: {
+                                            areaConstruida,
+                                            uniqueId: generateUniqueId(),
+                                            utm_source: utmSource,
+                                            utm_medium: utmMedium,
+                                            utm_campaign: utmCampaign,
+                                            utm_content: utmContent,
+                                            utm_term: utmTerm,
+                                            page_referrer: pageReferrer
+                                        }
+                                    }
+                                ]
+                            };
+                
+                            fetch('https://app.pipe.run/webservice/integradorJson?hash=910f50d4-0c50-4e04-880a-f5950cd33dc6', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(payload)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Success:', data);
+                
+                                displayLoadingOverlay(false);
+                                alert('Formulário enviado com sucesso!');
+                                formElement.reset();
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                                displayLoadingOverlay(false);
+                                alert('Houve um erro ao enviar o formulário.');
+                            });
+                        });
+                
+                        function generateUniqueId() {
+                            return new Date().getTime().toString();
+                        }
+                
+                        function getUTMs() {
+                            const urlParams = new URLSearchParams(window.location.search);
+                            return {
+                                utm_source: urlParams.get('utm_source'),
+                                utm_medium: urlParams.get('utm_medium'),
+                                utm_campaign: urlParams.get('utm_campaign'),
+                                utm_content: urlParams.get('utm_content'),
+                                utm_term: urlParams.get('utm_term'),
+                            };
+                        }
+                
+                        function displayLoadingOverlay(show) {
+                            if (show) {
+                                // Mostra um overlay de carregamento
+                                console.log("Mostrando overlay de carregamento...");
+                            } else {
+                                // Remove o overlay de carregamento
+                                console.log("Removendo overlay de carregamento...");
+                            }
+                        }
+                    });
+                </script>
+                
+            </form>
+
+        </div>
+        <div class="home-images">
+        </div>
+
+    </section>
+
+    <section class="steelframe" id="steelframe">
+        <div class="steelframe-images">
+            <img src="src/assets/steelframe.JPG" alt="imagem para decidir ainda">
+            <span><img src="src/assets/logoIcon.png" alt="logo da fast drywall e steel frame"></span>
+        </div>
+        <div class="steelframe-texts">
+            <h1>Steel Frame <b>vs</b> Alvenaria</h1>
+            <div>
+                <ol>
+                    <li>Construção 4x mais rápida</li>
+                    <li>Construção limpa</li>
+                    <li>Baixo consumo de recursos naturais</li>
+                    <li>Maior eficiência energética</li>
+                    <li>Menor desperdício de materiais</li>
+                    <li>Perfis de aço leve</li>
+                    <li>Mais resistente</li>
+                    <li>Superversátil</li>
+                </ol>
+                <ol>
+                    <li>Geração elevada de resíduos</li>
+                    <li>Desperdício elevado de materiais</li>
+                    <li>Construção tradicional demorada</li>
+                    <li>Alto consumo de água e outros recursos naturais</li>
+                    <li>Sem flexibilidade para adaptações futuras</li>
+                </ol>
+            </div>
+            <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">Solicitar orçamento imediato</button>
+        </div>
+    </section>
+    
+    <section class="topicos" id="topicos">
+        <div class="background-black"></div>
+        <div class="topicos-title">
+            <h1>Vantagens</h1>
+        </div>
+        <div class="topicos-container">
+            <div class="topicos-card">
+                <img src="src/assets/velocidade.png" alt="imagem do topico">
+                <div>
+                    <h2>Sua construção 4x mais rápida e eficiente</h2>
+                    <p>O Steel Frame permite uma execução 4x mais produtiva graças às estruturas pré-fabricadas, que agilizam todo o processo de construção.</p>
+                    <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
+                </div>
+            </div>
+            <div class="topicos-card">
+                <img src="src/assets/limpa.png" alt="imagem do topico">
+                <div>
+                    <h2>Sua obra mais limpa</h2>
+                    <p>Graças à fabricação sob medida de cada perfil, uma construção em Steel Frame é, altamente, precisa, o que elimina o desperdício comum de materiais em obras tradicionais.</p>
+                    <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
+                </div>
+            </div>
+            <div class="topicos-card">
+                <img src="src/assets/custos.png" alt="imagem do topico">
+                <div>
+                    <h2>Maior precisão de custos</h2>
+                    <p>O Steel Frame proporciona um planejamento detalhado desde o início. Isso evita gastos inesperados e assegura o cumprimento do orçamento com maior transparência.</p>
+                    <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
+                </div>
+            </div>
+            <div class="topicos-card">
+                <img src="src/assets/logistica.png" alt="imagem do topico">
+                <div>
+                    <h2>Logística</h2>
+                    <p>Uma construção em Steel Frame é até 10 vezes mais leve que a alvenaria, facilitando a logística e reduzindo viagens de transporte, o que otimiza tempo e custos.</p>
+                    <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
+                </div>
+            </div>
+            <div class="topicos-card">
+                <img src="src/assets/agua.png" alt="imagem do topico">
+                <div>
+                    <h2>Baixo consumo de água</h2>
+                    <p>Como construção a seco, o Steel Frame elimina a água usada na mistura de argamassa e concreto. A montagem com peças pré-fabricadas garante eficiência e sustentabilidade.</p>
+                    <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
+                </div>
+            </div>
+            <div class="topicos-card">
+                <img src="src/assets/ambiental.png" alt="imagem do topico">
+                <div>
+                    <h2>Baixo impacto ambiental</h2>
+                    <p>O uso de materiais recicláveis, como o aço, e a redução de resíduos, além do processo industrializado tornam o Steel Frame mais sustentável.</p>
+                    <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">SOLICITAR ORÇAMENTO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="porques" id="porques">
+        <div class="porques-text">
+            <h1>
+                Por que escolher <b>a Fast?</b>
+            </h1>
+        </div>
+        <div class="porques-container">
+            <div class="porques-cards">
+                <img src="src/assets/prontaentrega.png" alt="icone">
+                <h2>Sistema completo e à pronta entrega</h2>
+                <p>Na Fast, você encontra tudo o que precisa para o sistema completo de Steel Frame e Drywall, com materiais de alta qualidade sempre disponíveis.</p>
+            </div>
+            <div class="porques-cards">
+                <img src="src/assets/preçoscompetitivos.png" alt="icone">
+                <h2>Tem os preços competitivos</h2>
+                <p>Oferecemos as melhores condições do mercado, combinando economia com produtos de primeira linha. Com a Fast, você tem o melhor custo-benefício para o seu projeto.</p>
+            </div>
+            <div class="porques-cards">
+                <img src="src/assets/suporte.png" alt="icone">
+                <h2>Suporte especializado</h2>
+                <p>Nossa equipe é treinada para oferecer orientações técnicas e ajudar você a fazer as melhores escolhas para a sua obra. Do planejamento à execução, estamos ao seu lado.</p>
+            </div>
+            <div class="porques-cards">
+                <img src="src/assets/sustentabilidade.png" alt="icone">
+                <h2>Compromisso com sustentabilidade</h2>
+                <p>Trabalhamos com soluções que reduzem desperdícios, otimizam recursos e priorizam materiais sustentáveis, alinhando economia e responsabilidade ambiental.</p>
+            </div>
+        </div>
+        <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">Solicitar orçamento</button>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <div class="background-black"></div>
+        <div class="sobre-texts">
+            <div class="sobre-left">
+                <h1>Conheça algumas de nossas obras pelo <b>Brasil</b></h1>
+            </div>
+            <div class="sobre-right">
+                <p>Assim como a Fast, você também consegue ter uma obra de qualidade em tempo recorde.</p>
+                <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">Solicitar orçamento</button>
+            </div>
+        </div>
+        <div class="sobre-carrossel">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="src/assets/escola.jpg" alt="foto de obra"></div>
+                    <div class="swiper-slide"><img src="src/assets/galpao.jpg" alt="foto de obra"></div>
+                    <div class="swiper-slide"><img src="src/assets/leange_mar.webp" alt="foto de obra"></div>
+                    <div class="swiper-slide"><img src="src/assets/leangeserra_foto.webp" alt="foto de obra"></div>
+                    <div class="swiper-slide"><img src="src/assets/obra.JPG" alt="foto de obra"></div>
+                    <div class="swiper-slide"><img src="src/assets/obra2.JPG" alt="foto de obra"></div>
+                    <div class="swiper-slide"><img src="src/assets/obra3.JPG" alt="foto de obra"></div>
+                </div>
+            </div>
+        </div>
+        
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                let slidesPerView = window.innerWidth < 768 ? 1 : 3; // Define o número inicial de slides visíveis
+                const swiper = new Swiper(".swiper-container", {
+                    slidesPerView: slidesPerView,
+                    spaceBetween: 0,
+                    loop: true,
+                    autoplay: {
+                        delay: 0,
+                        disableOnInteraction: false,
+                    },
+                    speed: 5000,
+                    grabCursor: true,
+                });
+        
+                // Recalcula os slides quando a janela é redimensionada
+                window.addEventListener("resize", () => {
+                    const newSlidesPerView = window.innerWidth < 768 ? 1 : 3;
+                    if (newSlidesPerView !== slidesPerView) {
+                        slidesPerView = newSlidesPerView;
+                        swiper.params.slidesPerView = slidesPerView;
+                        swiper.update(); // Atualiza o Swiper com o novo número de slides
+                        console.log("Slides ajustados:", slidesPerView);
+                    }
+                });
+        
+                console.log("Swiper inicializado com slides:", slidesPerView);
+            });
+        </script>
+        
+        
+        
+        
+        
+        
+        <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">Solicitar orçamento</button>
+    </section>
+
+    <section class="depoimentos" id="depoimentos">
+        <div class="depoimentos-text">
+            <h1>Quem compra, <b>confia!</b></h1>
+        </div>
+        <div class="depoimentos-container">
+            <div class="depoimentos-card">
+                <p>“Eu compro na Fast pois tem o melhor preço e o melhor atendimento!”</p>
+                <div>
+                    <div style="background-image: url('https://fastdrywall.com.br/wp-content/uploads/IMG-20240805-WA0026.jpg');"></div>
+                    <div>
+                        <h2>Alex Raimundo</h2>
+                        <p>Montador</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depoimentos-card">
+                <p>“O que me motiva a comprar na Fast é o atendimento, a parceria, a reciprocidade, a atenção às minhas dores e dificuldades, e o comprometimento com o orçamento. Já tenho anos de parceria com a Fast e posso dizer que o sucesso das minhas obras está diretamente ligado à estrutura e existência da Fast.”</p>
+                <div>
+                    <div style="background-image: url('https://fastdrywall.com.br/wp-content/uploads/IMG-20240805-WA0025.jpg');"></div>
+                    <div>
+                        <h2>Thiago</h2>
+                        <p>Montador</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depoimentos-card">
+                <p>“É um lugar onde sempre fui bem tratado e sempre tive uma ótima recepção. Os vendedores são excelentes, o preço é ótimo e a entrega é sempre rápida. Sempre compro com a Fast!”</p>
+                <div>
+                    <div style="background-image: url('https://fastdrywall.com.br/wp-content/uploads/Captura-de-tela-2024-08-07-105803.png');"></div>
+                    <div>
+                        <h2>Tiago</h2>
+                        <p>Gesseiro</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depoimentos-card">
+                <p>“A Fast Drywall nunca me deixa na mão. Pronto atendimento, com vendedores experientes e dispostos a ajudar, que sabem indicar os melhores produtos e ferramentas e oferecem os melhores descontos. Tudo isso conta muito. É disso que a gente precisa!”</p>
+                <div>
+                    <div style="background-image: url('https://fastdrywall.com.br/wp-content/uploads/IMG-20240805-WA0024.jpg');"></div>
+                    <div>
+                        <h2>Renato Lopes</h2>
+                        <p>Gesseiro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="rodape" id="rodape">
+        <div class="background-black"></div>
+        <div class="rodape-text">
+            <h1>Não perca mais tempo, compre agora na <b>Fast Drywall e Steel Frame</b>, é só clicar no botão abaixo</h1>
+            <button onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' })">Solicitar meu orçamento agora!</button>
+        </div>
+        <div class="rodape-politica">
+            <p>Confira nossa <a href="#">politica de privacidade</a></p>
+            <p>Desenvolvido por <a href="https://www.linkedin.com/in/aleph-ramos" target="_blank">Aleph</a></p>
+        </div>
+    </footer>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2BPC3G"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+</body>
+
+</html>

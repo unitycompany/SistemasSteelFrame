@@ -1,0 +1,117 @@
+.topicos{
+    width: 100%;
+    height: auto;
+    padding: 5% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1140px;
+    position: relative;
+    z-index: 1;
+}
+
+
+.topicos-title h1{
+    font-size: 2rem;
+    line-height: 100%;
+    color: var(--color--white);
+}
+
+.topicos-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 80%;
+    gap: 20px;
+}
+
+.topicos-card{
+    width: 30%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0 0 0;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: var(--color--gray);
+}
+
+.topicos-card img{
+    height: 100px;
+    width: 100%;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.topicos-card div{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    height: 30vh;
+}
+
+.topicos-card div h2{
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-align: center;
+}
+
+.topicos-card div p{
+    font-size: .9rem;
+    line-height: 100%;
+    text-align: justify;
+    opacity: .6;
+    width: 100%;
+}
+
+.topicos-card div button{
+    font-size: .9rem;
+    padding: 10px;
+    width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 1240px){
+    .topicos{
+        gap: 50px;
+        height: auto;
+        padding: 10% 5%;
+    }
+
+    .topicos-container{
+        height: auto;
+    }
+
+    .topicos-card{
+        width: 31%;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px){
+    .topicos{
+        height: auto;
+        padding: 10% 2.5%;
+    }
+
+    .topicos-title h1{
+        font-size: 1.5rem;
+    }
+
+    .topicos-container{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .topicos-card{
+        width: 100%;
+        height: 50vh;
+    }
+}

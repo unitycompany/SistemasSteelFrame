@@ -1,0 +1,93 @@
+.porques{
+    width: 100%;
+    max-width: 1140px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5%;
+    gap: 35px;
+}
+
+.porques-text{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.porques-text h1{
+    font-size: 2rem;
+    width: 50%;
+    text-align: center;
+    line-height: 120%;
+}
+
+.porques-text h1 b{
+    color: var(--color--red);
+}
+
+.porques-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    height: 45%;
+}
+
+.porques-cards{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+}
+
+.porques-cards img{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+}
+
+.porques-cards h2{
+    font-size: 1.3rem;
+    color: var(--color--red);
+    line-height: 100%;
+}
+
+.porques-cards p{
+    font-size: .9rem;
+    opacity: .6;
+    line-height: 100%;
+}
+
+@media (max-width: 768px){
+    .porques{
+        height: auto;
+        padding: 10% 2.5%;
+        gap: 30px;
+    }
+
+    .porques-text h1{
+        font-size: 1.5rem;
+        width: 95%;
+    }
+
+    .porques-container{
+        flex-wrap: wrap;
+        
+    }
+
+    .porques-cards{
+        width: 45%;
+        align-items: center;
+        text-align: center;
+    }
+
+}

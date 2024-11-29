@@ -89,10 +89,15 @@
         height: auto;
     }
 
+    .topicos-card img{
+        height: 70%;
+    }
+
+
     .topicos-card{
         width: 31%;
         gap: 30px;
-        height: 50vh;
+        height: 60vh;
     }
 }
 

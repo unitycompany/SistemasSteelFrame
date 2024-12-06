@@ -20,8 +20,8 @@
 
 .rodape-text h1{
     font-size: 2rem;
-    line-height: 120%;
-    width: 70%;
+    line-height: 150%;
+    width: 100%;
     text-align: center;
     color: var(--color--white);
 }

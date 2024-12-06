@@ -19,7 +19,7 @@ html, body{
 }
 
 button {
-    background: linear-gradient(90deg, var(--color--red), var(--color--red--light));
+    background: linear-gradient(45deg, var(--color--green), var(--color--dark--green));
     padding: 12px 30px;
     color: var(--color--white);
     border-radius: 12px;

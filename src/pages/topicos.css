@@ -121,3 +121,33 @@
         height: 50vh;
     }
 }
+
+.sobre-carrossel {
+    position: relative;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    height: auto;
+}
+
+.slide-caption {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--color--white);
+    width: 30%;
+    max-width: auto;
+    border-radius: 10px;
+    padding: 5px;
+    color: var(--color--black);
+    font-weight: 400;
+}

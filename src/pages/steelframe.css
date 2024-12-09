@@ -5,7 +5,7 @@
     justify-content: space-between;
     padding: 0 5%;
     height: 70vh;
-    gap: 50px;
+    gap: 100px;
     max-width: 1140px;
 }
 
@@ -40,14 +40,14 @@
 }
 
 .steelframe-images div{
-    background-image: url('../assets/home.JPG');
+    background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/567db5ef-af95-4edd-7541-f12a95023900/public');
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
     background-position: top;
     position: absolute;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     border-radius: 12px;
 }
